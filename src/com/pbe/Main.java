@@ -255,20 +255,20 @@ public class Main {
         System.out.println();
 
         // Do-while as menu selection
-        System.out.println("Do-while as menu selection");
-        char choice;
-        do {
-            System.out.println("1. Item 1 ");
-            System.out.println("2. Item 2 ");
-            System.out.println("3. Item 3 ");
-            System.out.println("4. Item 4 ");
-            System.out.println("5. Item 5 ");
-            System.out.print("Make your selection: \n");
-            choice = (char) System.in.read(); // reading keyboard input from user;
-            //Scanner in = new Scanner(System.in); // alternative method to read input from user via console
-        } while (choice < '1' || choice > '5'); // keep iterating until user provides an input of 1 up and to 5
-        System.out.println("User selected item " + choice);
-        System.out.println();
+//        System.out.println("Do-while as menu selection");
+//        char choice;
+//        do {
+//            System.out.println("1. Item 1 ");
+//            System.out.println("2. Item 2 ");
+//            System.out.println("3. Item 3 ");
+//            System.out.println("4. Item 4 ");
+//            System.out.println("5. Item 5 ");
+//            System.out.print("Make your selection: \n");
+//            choice = (char) System.in.read(); // reading keyboard input from user;
+//            //Scanner in = new Scanner(System.in); // alternative method to read input from user via console
+//        } while (choice < '1' || choice > '5'); // keep iterating until user provides an input of 1 up and to 5
+//        System.out.println("User selected item " + choice);
+//        System.out.println();
 
         // For loop
         System.out.println("For loop");
@@ -298,9 +298,9 @@ public class Main {
             }
         }
         if (!check) {
-            System.out.println(checknum + " is a prime number.");
+            System.out.println(checknum + " is a prime number. \n");
         } else {
-            System.out.println(checknum + " is not a prime number.");
+            System.out.println(checknum + " is not a prime number. \n");
         }
 
         // For loop with multiple control variables; separated by comma
@@ -309,5 +309,60 @@ public class Main {
             System.out.println("a now is: " + a + " and b now is: " + b);
         }
         System.out.println();
-    }
+
+        // For loop with boolean as control variable
+        System.out.println("For loop with boolean as control variable");
+//        a1 = false;
+//        for (a=1; !a1; a++) { // for loop continues to run until boolean variable a1 is set to true; i.e. it does not test the value of a
+//             if(carryoutsomemethod()) a1 = true
+//        }
+        System.out.println();
+
+        // For loop without initialization and iteration expression
+        System.out.println("For loop without initialization and iteration expression");
+        a = 0;
+        a1 = false;
+        for( ; !a1; ) {
+            System.out.println("a is " + a);
+            if (a ==5) a1 = true;
+            a++;
+        }
+        System.out.println();
+
+        // For loop, iterating through an array
+        System.out.println("For loop, iterating through array");
+        int nums[] = { 1, 2, 3, 4, 5 };
+        sum = 0;
+        for(a=0; a < 5; a++) sum +=nums[a];
+        System.out.println("Total sum of numbers in nums: " + sum + " \n");
+
+        // For-each (also referred to as 'enhanced for loop')
+        // Cycles through a collection of objects, such as an array, in sequential fashion, from start to finish
+        // When using a code block it is possible to terminate the loop earlier by using a break statement
+        System.out.println("For-each loop, iterating through array");
+        nums = new int[] { 1, 2, 3, 4, 5 };
+        sum = 0;
+        for (int x : nums) sum += x; // Note: the for-each iteration variable x is 'read only', relating to the underlying array only and cannot be assigned a value
+        System.out.println("Total sum of numbers in nums: " + sum + " \n");
+
+        // For-each iterating over a two dimensional array
+        System.out.println("For-each loop, iterating over a two dimensional array");
+        int[][] numbers = new int[5][5]; // initiate two dimensional array
+        int count = 1; // set a value counter
+
+        // loop through arrays with for loop to fill arrays with values
+        for(a = 0; a < 5; a++) // loop through first array
+            for (b = 0; b < 5; b++) // loop through second array
+                numbers[a][b] = count++; // add value to current array element
+
+        // loop through array with for-each loop to read and sum values
+        for(int array[] : numbers) { // y referencing to one-dimensional array, with each iteration obtaining the next array in numbers
+            for (int value : array) { // inner for loop cycles through each of the arrays
+                System.out.println("Value is: " + value); // displaying value of each element
+                sum += value; // summing the values
+                }
+            }
+        System.out.println();
+
+        }
 }
