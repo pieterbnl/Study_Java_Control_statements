@@ -1,5 +1,8 @@
 package com.pbe;
 
+import java.io.IOException;
+import java.util.Scanner;
+
 /** Class to demonstrate the use of Control statements and flow in various variations.
  @author Pieter Beernink
  @version 1.0
@@ -13,7 +16,7 @@ public class Main {
     2. Iteration; repeat program statement execution one or more times
     3. Jump; have program execute in nonlinear fashion
     4. Exceptions */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         // Setting some initial variables
         int a, b, c, d, sum1, sum2;
@@ -186,23 +189,125 @@ public class Main {
             case 1:
                 switch(b) {
                     case 1:
-                        System.out.println("Switch a - Switch b - case 1");
+                        System.out.println("Switch a - Switch b - case 1 \n");
                         break;
                     case 2:
-                        System.out.println("Switch a - Switch b - case 2");
+                        System.out.println("Switch a - Switch b - case 2 \n");
                         break;
                     case 3:
-                        System.out.println("Switch a - Switch b - case 3");
+                        System.out.println("Switch a - Switch b - case 3 \n");
                         break;
                 }
                 break; // break needed to end this nested switch! or case 2 will be executed as well and then break
             case 2:
-                System.out.println("Switch a - case 2");
+                System.out.println("Switch a - case 2 \n");
                 break;
             case 3:
-                System.out.println("Switch a - case 3");
+                System.out.println("Switch a - case 3 \n");
                 break;
         }
 
+
+        // *********************
+        // ITERATION STATEMENTS
+        // *********************
+
+        // Java iteration statements are: for, while and do-while.
+
+        // While statement - Java's most fundamental loop statement, repeating a statement or block while its controlling expression is true
+        System.out.println("While statement");
+        a = 5;
+        while(a < 10) { // iterating until a is larger than 10
+            System.out.println("a is: " + a);
+            a++; // increment a
+        }
+        System.out.println();
+
+        // While statement that's not executed
+        System.out.println("While statement that's not executed ;-)");
+        a = 5;
+        b = 5;
+        while (a>b)
+            System.out.println("This will not be executed because the case a>b is never true with the given values");
+        System.out.println();
+
+        // While statement with empty body
+        System.out.println("While statement with empty body");
+        a = 10;
+        b = 20;
+        while(++a < --b); // a will increment and b will decrement, while being compared, stopping the loop when a is bigger than b
+        System.out.println("Midpoint between a and b is: " + a + " \n");
+
+        // Do-While statement - If the condition in a while loop is false, it will never run. The do-while loop will run at least once.
+        System.out.println("Do-While statement");
+        a = 5;
+        do {
+            System.out.println("a is: " + a);
+            a++; // increment a
+        } while(a < 11);
+        System.out.println();
+
+        // or in short
+        a = 5;
+        do {
+            System.out.println("a is: " + a);
+        } while(a++ < 10);
+        System.out.println();
+
+        // Do-while as menu selection
+        System.out.println("Do-while as menu selection");
+        char choice;
+        do {
+            System.out.println("1. Item 1 ");
+            System.out.println("2. Item 2 ");
+            System.out.println("3. Item 3 ");
+            System.out.println("4. Item 4 ");
+            System.out.println("5. Item 5 ");
+            System.out.print("Make your selection: \n");
+            choice = (char) System.in.read(); // reading keyboard input from user;
+            //Scanner in = new Scanner(System.in); // alternative method to read input from user via console
+        } while (choice < '1' || choice > '5'); // keep iterating until user provides an input of 1 up and to 5
+        System.out.println("User selected item " + choice);
+        System.out.println();
+
+        // For loop
+        System.out.println("For loop");
+        for (a=5; a<11; a++) { // note that the control variable can also be initialized inside the loop itself, i.e. for example ->> for (int x=5; x<11; x++)
+            System.out.println("a now is: " + a); // note that the scope of this variable extends only to the for loop itself, outside it will no longer exist
+        }
+        System.out.println();
+
+        // For loop to calculate sum
+        System.out.println("For loop to calculate sum");
+        int sum = 0;
+        for (a=0; a<10; a++) { // note that the control variable can also be initialized inside the loop itself, i.e. for example ->> for (int x=5; x<11; x++)
+            sum += a;
+        }
+        System.out.println("The sum is: " + sum);
+        System.out.println();
+
+        // For loop to check for prime numbers
+        // Note: A prime number is only divisible by 1 and by itself. If it's divisible by any other number, it's not a prime number.
+        System.out.println("For loop to check for primes");
+        boolean check = false; // set initial check to false
+        int checknum = 5; // set number to check
+        for (a = 2; a <= checknum / 2; ++a) { // Looping from 2 to checknum/2 as a prime number should not be divisible by more than its half.
+            if (checknum % a == 0) { // With each loop, check if checknum has a remainder. If it has no remainder (i.e. it's divisible), then it is not a prime number.
+                check = true; // Not a prime number
+                break; // Break out of loop
+            }
+        }
+        if (!check) {
+            System.out.println(checknum + " is a prime number.");
+        } else {
+            System.out.println(checknum + " is not a prime number.");
+        }
+
+        // For loop with multiple control variables; separated by comma
+        System.out.println("For loop with multiple control variables");
+        for (a=5, b=10; a<b; a++, b--) {
+            System.out.println("a now is: " + a + " and b now is: " + b);
+        }
+        System.out.println();
     }
 }
